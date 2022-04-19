@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "devStart": "nodemon index.js"
   ***REMOVED***,
   "repository": {
     "type": "git",
@@ -21,6 +22,10 @@
   ***REMOVED***,
   "homepage": "https://github.com/Null-Cat/NSQLI#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "mysql": "^2.18.1"
+  ***REMOVED***,
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   ***REMOVED***
 ***REMOVED***
