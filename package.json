@@ -1,0 +1,26 @@
+{
+  "name": "nsqli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  ***REMOVED***,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Null-Cat/NSQLI.git"
+  ***REMOVED***,
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": "16.x"
+  ***REMOVED***,
+  "bugs": {
+    "url": "https://github.com/Null-Cat/NSQLI/issues"
+  ***REMOVED***,
+  "homepage": "https://github.com/Null-Cat/NSQLI#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  ***REMOVED***
+***REMOVED***
