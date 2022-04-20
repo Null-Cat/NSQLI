@@ -1,0 +1,46 @@
+doctype
+html(lang='en')
+    head
+        meta(charset='utf-8')
+        link(rel='stylesheet' href='//fonts.googleapis.com/css?family=Pacifico' type='text/css')
+        link(rel='stylesheet' href='/css/index.css' type='text/css')
+        title= 'Snowdown Match History'
+    body
+        h1= 'Snowdown Match History'
+        p= 'This is a list of all the matches that have been played.' 
+        table
+            thead
+                tr
+                    th= 'MatchID'
+                    th= 'Player1User'
+                    th= 'Player2User'
+                    th= 'Player1HeadShots'
+                    th= 'Player2HeadShots'
+                    th= 'Player1Hits'
+                    th= 'Player2Hits'
+                    th= 'Player1FinalScore'
+                    th= 'Player2FinalScore'
+                    th= 'StartTime'
+                    th= 'EndTime'
+                    th= 'MatchResult'
+                    th= 'MatchLog'
+                    th= 'IP'
+                    th= 'CMPUser'
+            tbody
+                each match in matches
+                    tr
+                        td= match.MatchID
+                        td= match.Player1User
+                        td= match.Player2User
+                        td= match.Player1HeadShotCount
+                        td= match.Player2HeadShotCount
+                        td= match.Player1HitCount
+                        td= match.Player2HitCount
+                        td= match.Player1FinalScore
+                        td= match.Player2FinalScore
+                        td= match.StartTime
+                        td= match.EndTime
+                        td= match.MatchResult
+                        td= match.MatchLog
+                        td= match.IPAddress
+                        td= match.CMPUser
