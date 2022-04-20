@@ -11,13 +11,15 @@ const router = express.Router()
 router
     .route('/')
     .get((req, res) => {
-        if (!req.query.request) {
-            res.sendStatus(404)
-            return
-    ***REMOVED***
-        if (req.query.request.toLowerCase() === "matchhistory") {
+        if (req.query.request && req.query.request.toLowerCase() === "matchhistory") {
             pool.query('SELECT * FROM MatchHistory', (err, rows) => {
-                if (err) throw err
+                if (err) { res.sendStatus(404); return ***REMOVED***
+                res.json(rows)
+        ***REMOVED***)
+    ***REMOVED*** else if (req.query.matchid) {
+            console.log(req.query.matchid)
+            pool.query('SELECT * FROM MatchHistory WHERE MatchID = ?', req.query.matchid.toString(), (err, rows) => {
+                if (err) { res.sendStatus(404); return ***REMOVED***
                 res.json(rows)
         ***REMOVED***)
     ***REMOVED*** else {
