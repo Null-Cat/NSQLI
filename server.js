@@ -27,6 +27,10 @@ app.get('/', (req, res) => {
   ***REMOVED***)
 ***REMOVED***)
 
+app.all('*', (req, res) => {
+  res.sendStatus(404)
+***REMOVED***);
+
 function LogConnections(req, res, next) {
   console.log(`${req.method***REMOVED*** request for ${req.url***REMOVED*** from ${req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(',')[0] : req.socket.remoteAddress***REMOVED***`)
   next()
