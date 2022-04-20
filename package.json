@@ -1,7 +1,7 @@
 {
   "name": "nsqli",
   "version": "1.0.0",
-  "description": "",
+  "description": "Node based SQL Interface",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -12,7 +12,7 @@
     "url": "git+https://github.com/Null-Cat/NSQLI.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Null-Cat",
   "license": "MIT",
   "engines": {
     "node": "16.x"

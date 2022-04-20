@@ -2,13 +2,14 @@ doctype
 html(lang='en')
     head
         meta(charset='utf-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
         link(rel='stylesheet' href='//fonts.googleapis.com/css?family=Pacifico' type='text/css')
         link(rel='stylesheet' href='/css/index.css' type='text/css')
         title= 'Snowdown Match History'
     body
         h1= 'Snowdown Match History'
         p= 'This is a list of all the matches that have been played.' 
-        div(style="overflow-x:auto;", class='match-list')
+        div(class='match-list', style="overflow-x:auto;")
             table
                 thead
                     tr

@@ -17,7 +17,6 @@ router
                 res.json(rows)
             })
         } else if (req.query.matchid) {
-            console.log(req.query.matchid)
             pool.query('SELECT * FROM MatchHistory WHERE MatchID = ?', req.query.matchid.toString(), (err, rows) => {
                 if (err) { res.sendStatus(404); return }
                 res.json(rows)
