@@ -3,12 +3,10 @@ const mysql = require('mysql')
 const jwt = require('jsonwebtoken')
 
 const dbconfig = require('./dbconfig')
-const con = mysql.createConnection(dbconfig.db)
+const pool = mysql.createPool(dbconfig.db)
 const jwtSecret = 'SnowD0wnVERYsEcReTPaSSw0Rd'
 
 const router = express.Router()
-
-router.use(authenticateJWT)
 
 router
     .route('/')
@@ -18,20 +16,17 @@ router
             return
         }
         if (req.query.request.toLowerCase() === "matchhistory") {
-            con.connect()
-            con.query('SELECT * FROM MatchHistory', (err, rows) => {
+            pool.query('SELECT * FROM MatchHistory', (err, rows) => {
                 if (err) throw err
                 res.json(rows)
             })
-            con.end()
         } else {
             res.sendStatus(404)
         }
     })
-    .post(express.json(), (req, res) => {
+    .post(authenticateJWT, express.json(), (req, res) => {
         if (req.body.cmd === 'add') {
-            con.connect()
-            con.query('INSERT INTO MatchHistory SET ?', req.body.data, (err, result) => {
+            pool.query('INSERT INTO MatchHistory SET ?', req.body.data, (err, result) => {
                 if (err && err.code === 'ER_DUP_ENTRY') {
                     console.log('Duplicate Entry')
                     res.sendStatus(409)
@@ -42,7 +37,6 @@ router
                 console.log('Added New Match')
                 console.log(result)
             })
-            con.end()
         }
     })
 
