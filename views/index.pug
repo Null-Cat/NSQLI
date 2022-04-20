@@ -8,39 +8,38 @@ html(lang='en')
     body
         h1= 'Snowdown Match History'
         p= 'This is a list of all the matches that have been played.' 
-        table
-            thead
-                tr
-                    th= 'MatchID'
-                    th= 'Player1User'
-                    th= 'Player2User'
-                    th= 'Player1HeadShots'
-                    th= 'Player2HeadShots'
-                    th= 'Player1Hits'
-                    th= 'Player2Hits'
-                    th= 'Player1FinalScore'
-                    th= 'Player2FinalScore'
-                    th= 'StartTime'
-                    th= 'EndTime'
-                    th= 'MatchResult'
-                    th= 'MatchLog'
-                    th= 'IP'
-                    th= 'CMPUser'
-            tbody
-                each match in matches
+        div(style="overflow-x:auto;", class='match-list')
+            table
+                thead
                     tr
-                        td= match.MatchID
-                        td= match.Player1User
-                        td= match.Player2User
-                        td= match.Player1HeadShotCount
-                        td= match.Player2HeadShotCount
-                        td= match.Player1HitCount
-                        td= match.Player2HitCount
-                        td= match.Player1FinalScore
-                        td= match.Player2FinalScore
-                        td= match.StartTime
-                        td= match.EndTime
-                        td= match.MatchResult
-                        td= match.MatchLog
-                        td= match.IPAddress
-                        td= match.CMPUser
+                        th= 'MatchID'
+                        th= 'P1 User'
+                        th= 'P2 User'
+                        th= 'P1 HeadShots'
+                        th= 'P2 HeadShots'
+                        th= 'P1 Hits'
+                        th= 'P2 Hits'
+                        th= 'P1 FinalScore'
+                        th= 'P2 FinalScore'
+                        th= 'MatchTime'
+                        th= 'Winner'
+                        th= 'MatchLog'
+                        th= 'IP'
+                        th= 'CMPUser'
+                tbody
+                    each match in matches
+                        tr
+                            td= match.MatchID
+                            td= match.Player1User
+                            td= match.Player2User
+                            td= match.Player1HeadShotCount
+                            td= match.Player2HeadShotCount
+                            td= match.Player1HitCount
+                            td= match.Player2HitCount
+                            td= match.Player1FinalScore
+                            td= match.Player2FinalScore
+                            td= new Date((match.EndTime - match.StartTime)).toUTCString().match(/(\d\d:\d\d:\d\d)/)[0]
+                            td= match.MatchResult
+                            td= match.MatchLog
+                            td= match.IPAddress
+                            td= match.CMPUser
