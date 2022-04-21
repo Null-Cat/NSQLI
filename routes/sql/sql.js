@@ -11,7 +11,7 @@ const router = express.Router()
 router
     .route('/')
     .get((req, res) => {
-        if (req.query.request && req.query.request.toLowerCase() === "matchhistory") {
+        if (req.query.request && req.query.request.toLowerCase() === 'matchhistory') {
             pool.query('SELECT * FROM MatchHistory', (err, rows) => {
                 if (err) { res.sendStatus(404); return }
                 res.json(rows)

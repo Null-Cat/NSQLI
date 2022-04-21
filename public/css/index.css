@@ -8,24 +8,23 @@ body {
     background-color: #232323;
 }
 
+.page-header {
+    padding: 0.5rem 0 0.5rem 0.5rem;
+}
+
 h1 {
     font-family: Pacifico;
     color: white;
+    font-size: 3em;
 }
 
 p {
     font-family: Verdana, sans-serif;
     color: white;
-}
-
-.match-list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding-top: 1em;
 }
 
 table {
-    width: 99%;
     border: 1px solid;
     border-collapse: collapse;
     color: white;
@@ -45,12 +44,13 @@ th {
     border: 1px solid;
     color: white;
     background-color: #000000;
+    text-align: center;
 }
 
 td {
     font-family: sans-serif;
     text-align: center;
-    padding: 5px;
+    padding: 0.3em !important;
     border: 1px solid;
     color: white;
 }
