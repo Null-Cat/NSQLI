@@ -12,7 +12,7 @@ router
     .route('/')
     .get((req, res) => {
         if (req.query.request && req.query.request.toLowerCase() === 'matchhistory') {
-            pool.query('SELECT * FROM MatchHistory', (err, rows) => {
+            pool.query('SELECT * FROM MatchHistory ORDER BY EndTime DESC', (err, rows) => {
                 if (err) { res.sendStatus(404); return }
                 res.json(rows)
             })
