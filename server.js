@@ -27,6 +27,16 @@ app.get('/', (req, res) => {
   ***REMOVED***)
 ***REMOVED***)
 
+app.get('/leaderboard', (req, res) => {
+  http.get(`http://localhost:${port***REMOVED***/sql?request=leaderboard`, (response) => {
+    let body = ''
+    response.on('data', (chunk) => { body += chunk ***REMOVED***)
+    response.on('end', () => {
+      res.render('leaderboard', { leaderboardData: JSON.parse(body) ***REMOVED***)
+***REMOVED***)
+  ***REMOVED***)
+***REMOVED***)
+
 app.all('*', (req, res) => {
   res.sendStatus(404)
 ***REMOVED***);
