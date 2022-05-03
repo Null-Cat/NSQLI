@@ -16,6 +16,12 @@ router
                 if (err) { res.sendStatus(404); return }
                 res.json(rows)
             })
+        } else if (req.query.request && req.query.request.toLowerCase() === 'leaderboard') {
+            pool.query('SELECT Player1User AS Username, Player1FinalScore AS Score, Player1HeadShotCount AS Headshots, EndTime AS ScoreSetAt, MatchID FROM MatchHistory UNION ALL SELECT Player2User AS Username, Player2FinalScore AS Score, Player2HeadShotCount AS Headshots, EndTime AS ScoreSetAt, MatchID FROM MatchHistory ORDER BY Score DESC',
+                (err, rows) => {
+                    if (err) { res.sendStatus(404); return }
+                    res.json(rows)
+                })
         } else if (req.query.matchid) {
             pool.query('SELECT * FROM MatchHistory WHERE MatchID = ?', req.query.matchid.toString(), (err, rows) => {
                 if (err) { res.sendStatus(404); return }
