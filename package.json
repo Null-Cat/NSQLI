@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon 'server.js -d'"
   ***REMOVED***,
   "repository": {
     "type": "git",
@@ -27,7 +27,8 @@
     "http": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "yargs": "^17.4.1"
   ***REMOVED***,
   "devDependencies": {
     "nodemon": "^2.0.15"
