@@ -42,7 +42,7 @@ router
             ***REMOVED***
                 if (err) throw err
                 res.json(result)
-                console.log(`${clc.green('Added New Match: ')***REMOVED***${clc.blue(req.body.data.MatchID)***REMOVED***`)
+                console.log(`${clc.green('Added New Match: ')***REMOVED***${clc.cyan.bold(req.body.data.MatchID)***REMOVED***`)
         ***REMOVED***)
     ***REMOVED***
 ***REMOVED***)

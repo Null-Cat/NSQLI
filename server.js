@@ -55,11 +55,11 @@ app.all('*', (req, res) => {
 ***REMOVED***);
 
 function LogConnections(req, res, next) {
-  console.log(`${clc.inverse(req.method)***REMOVED*** request for ${clc.underline(req.url)***REMOVED*** from ${clc.blue(req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(',')[0] : req.socket.remoteAddress)***REMOVED***`)
+  console.log(`${clc.inverse(req.method)***REMOVED*** request for ${clc.underline(req.url)***REMOVED*** from ${clc.cyan(req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(',')[0] : req.socket.remoteAddress)***REMOVED***`)
   next()
 ***REMOVED***
 
 app.listen(port, () => {
   if (argv.dev) console.log(`${clc.yellow(`Server in development mode ${clc.bold('NO SSL')***REMOVED***`)***REMOVED***`)
-  console.log(`${clc.magenta(`Listening on port ${port***REMOVED***`)***REMOVED***`)
+  console.log(`${clc.magentaBright(`Listening on port ${port***REMOVED***`)***REMOVED***`)
 ***REMOVED***)
