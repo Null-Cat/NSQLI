@@ -19,7 +19,7 @@ app.set('views', './views')
 app.use(LogConnections)
 
 app.enable('trust proxy')
-app.get('*', (req, res, next) => {
+app.all('*', (req, res, next) => {
   var isLocal = (req.socket.localAddress === req.socket.remoteAddress)
   if (!argv.dev && !req.secure && !isLocal) res.redirect('https://' + req.headers.host + req.url)
   else next()
