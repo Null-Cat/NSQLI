@@ -42,7 +42,7 @@ router
                 }
                 if (err) throw err
                 res.json(result)
-                console.log(`${clc.green('Added New Match: ')}${clc.blue(req.body.data.MatchID)}`)
+                console.log(`${clc.green('Added New Match: ')}${clc.cyan.bold(req.body.data.MatchID)}`)
             })
         }
     })
