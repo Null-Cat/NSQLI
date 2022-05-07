@@ -1,6 +1,11 @@
 const express = require('express')
 const http = require('http')
 const clc = require('cli-color')
+const argv = require('yargs')(process.argv.slice(2))
+  .command('dev', 'Run the server in development mode')
+  .alias('dev', 'd')
+  .argv
+
 const app = express()
 
 const port = process.env.PORT || 3000
@@ -12,6 +17,11 @@ app.set('view engine', 'pug')
 app.set('views', './views')
 
 app.use(LogConnections)
+
+app.get('*', function (req, res, next) {
+  if (!argv.dev && req.protocol === 'http') res.redirect('https://' + req.headers.host + req.url)
+  else next()
+})
 
 app.use(express.urlencoded({ extended: true }))
 app.use('/sql', sql)
@@ -48,5 +58,6 @@ function LogConnections(req, res, next) {
 }
 
 app.listen(port, () => {
+  console.log(`${clc.yellow(`Server in development mode ${clc.bold('NO SSL')}`)}`)
   console.log(`${clc.magenta(`Listening on port ${port}`)}`)
 })
