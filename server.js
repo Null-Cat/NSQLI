@@ -18,8 +18,9 @@ app.set('views', './views')
 
 app.use(LogConnections)
 
+app.enable('trust proxy')
 app.get('*', function (req, res, next) {
-  if (!argv.dev && !req.protocol === 'http') res.redirect('https://' + req.headers.host + req.url)
+  if (!argv.dev && !req.secure) res.redirect('https://' + req.headers.host + req.url)
   else next()
 })
 
