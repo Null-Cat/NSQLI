@@ -21,7 +21,7 @@ app.use(LogConnections)
 app.enable('trust proxy')
 app.all('*', (req, res, next) => {
   var isLocal = (req.socket.localAddress === req.socket.remoteAddress)
-  if (!argv.dev && !req.secure && !isLocal) res.redirect('https://' + req.headers.host + req.url)
+  if (!argv.dev && !req.secure && !isLocal) res.redirect(308, 'https://' + req.headers.host + req.url)
   else next()
 ***REMOVED***)
 
