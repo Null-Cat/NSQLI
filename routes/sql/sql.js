@@ -1,6 +1,7 @@
 const express = require('express')
 const mysql = require('mysql')
 const jwt = require('jsonwebtoken')
+const clc = require('cli-color')
 
 const dbconfig = require('./dbconfig')
 const pool = mysql.createPool(dbconfig.db)
@@ -35,14 +36,13 @@ router
         if (req.body.cmd === 'add') {
             pool.query('INSERT INTO MatchHistory SET ?', req.body.data, (err, result) => {
                 if (err && err.code === 'ER_DUP_ENTRY') {
-                    console.log('Duplicate Entry')
+                    console.log(`${clc.red('Duplicate entry')***REMOVED***`)
                     res.sendStatus(409)
                     return
             ***REMOVED***
                 if (err) throw err
                 res.json(result)
-                console.log('Added New Match')
-                console.log(result)
+                console.log(`${clc.green('Added New Match: ')***REMOVED***${clc.blue(req.body.data.MatchID)***REMOVED***`)
         ***REMOVED***)
     ***REMOVED***
 ***REMOVED***)
@@ -54,12 +54,16 @@ function authenticateJWT(req, res, next) {
         const token = authHeader.split(' ')[1]
 
         jwt.verify(token, jwtSecret, (err, user) => {
-            if (err) return res.sendStatus(403)
+            if (err) {
+                console.log(`${clc.red('Invalid/Unauthorized Token')***REMOVED***`)
+                return res.sendStatus(403)
+        ***REMOVED***
             console.log(user)
             req.user = user
             next()
     ***REMOVED***)
 ***REMOVED*** else {
+        console.log(`${clc.red('Not Authenticated')***REMOVED***`)
         res.sendStatus(401)
 ***REMOVED***
 ***REMOVED***

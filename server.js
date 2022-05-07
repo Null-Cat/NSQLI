@@ -1,5 +1,6 @@
 const express = require('express')
 const http = require('http')
+const clc = require('cli-color')
 const app = express()
 
 const port = process.env.PORT || 3000
@@ -42,10 +43,10 @@ app.all('*', (req, res) => {
 ***REMOVED***);
 
 function LogConnections(req, res, next) {
-  console.log(`${req.method***REMOVED*** request for ${req.url***REMOVED*** from ${req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(',')[0] : req.socket.remoteAddress***REMOVED***`)
+  console.log(`${clc.inverse(req.method)***REMOVED*** request for ${clc.underline(req.url)***REMOVED*** from ${clc.blue(req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(',')[0] : req.socket.remoteAddress)***REMOVED***`)
   next()
 ***REMOVED***
 
 app.listen(port, () => {
-  console.log(`Listening on port ${port***REMOVED***`)
+  console.log(`${clc.magenta(`Listening on port ${port***REMOVED***`)***REMOVED***`)
 ***REMOVED***)
