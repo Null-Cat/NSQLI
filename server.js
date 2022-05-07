@@ -19,8 +19,9 @@ app.set('views', './views')
 app.use(LogConnections)
 
 app.enable('trust proxy')
-app.get('*', function (req, res, next) {
-  if (!argv.dev && !req.secure) res.redirect('https://' + req.headers.host + req.url)
+app.get('*', (req, res, next) => {
+  var isLocal = (req.socket.localAddress === req.socket.remoteAddress)
+  if (!argv.dev && !req.secure && !isLocal) res.redirect('https://' + req.headers.host + req.url)
   else next()
 })
 
@@ -59,6 +60,6 @@ function LogConnections(req, res, next) {
 }
 
 app.listen(port, () => {
-  console.log(`${clc.yellow(`Server in development mode ${clc.bold('NO SSL')}`)}`)
+  if (argv.dev) console.log(`${clc.yellow(`Server in development mode ${clc.bold('NO SSL')}`)}`)
   console.log(`${clc.magenta(`Listening on port ${port}`)}`)
 })
