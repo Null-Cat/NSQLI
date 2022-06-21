@@ -4,7 +4,7 @@
   "description": "Node based SQL Interface",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node server.js -d",
     "devStart": "nodemon 'server.js -d'"
   },
   "repository": {
