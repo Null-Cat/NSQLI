@@ -23,58 +23,58 @@ app.all("*", (req, res, next) => {
 	if (!argv.dev && !req.secure && !isLocal)
 		res.redirect(308, "https://" + req.headers.host + req.url)
 	else next()
-***REMOVED***)
+})
 
-app.use(express.urlencoded({ extended: true ***REMOVED***))
+app.use(express.urlencoded({ extended: true }))
 app.use("/sql", sql)
 
 app.use(express.static("public"))
 
 app.get("/", (req, res) => {
-	http.get(`http://localhost:${port***REMOVED***/sql?request=matchhistory`, (response) => {
+	http.get(`http://localhost:${port}/sql?request=matchhistory`, (response) => {
 		let body = ""
 		response.on("data", (chunk) => {
 			body += chunk
-		***REMOVED***)
+		})
 		response.on("end", () => {
-			res.render("index", { matches: JSON.parse(body) ***REMOVED***)
-		***REMOVED***)
-	***REMOVED***)
-***REMOVED***)
+			res.render("index", { matches: JSON.parse(body) })
+		})
+	})
+})
 
 app.get("/leaderboard", (req, res) => {
-	http.get(`http://localhost:${port***REMOVED***/sql?request=leaderboard`, (response) => {
+	http.get(`http://localhost:${port}/sql?request=leaderboard`, (response) => {
 		let body = ""
 		response.on("data", (chunk) => {
 			body += chunk
-		***REMOVED***)
+		})
 		response.on("end", () => {
-			res.render("leaderboard", { leaderboardData: JSON.parse(body) ***REMOVED***)
-		***REMOVED***)
-	***REMOVED***)
-***REMOVED***)
+			res.render("leaderboard", { leaderboardData: JSON.parse(body) })
+		})
+	})
+})
 
 app.all("*", (req, res) => {
 	res.sendStatus(404)
-***REMOVED***)
+})
 
 function LogConnections(req, res, next) {
 	console.log(
-		`${clc.inverse(req.method)***REMOVED*** request for ${clc.underline(
+		`${clc.inverse(req.method)} request for ${clc.underline(
 			req.url
-		)***REMOVED*** from ${clc.cyan(
+		)} from ${clc.cyan(
 			req.headers["x-forwarded-for"]
 				? req.headers["x-forwarded-for"].split(",")[0]
 				: req.socket.remoteAddress
-		)***REMOVED***`
+		)}`
 	)
 	next()
-***REMOVED***
+}
 
 app.listen(port, () => {
 	if (argv.dev)
 		console.log(
-			`${clc.yellow(`Server in development mode ${clc.bold("NO SSL")***REMOVED***`)***REMOVED***`
+			`${clc.yellow(`Server in development mode ${clc.bold("NO SSL")}`)}`
 		)
-	console.log(`${clc.magentaBright(`Listening on port ${port***REMOVED***`)***REMOVED***`)
-***REMOVED***)
+	console.log(`${clc.magentaBright(`Listening on port ${port}`)}`)
+})

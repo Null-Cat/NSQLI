@@ -14,38 +14,38 @@ router
 	.get((req, res) => {
 		if (req.query.request && req.query.request.toLowerCase() === 'matchhistory') {
 			pool.query('SELECT * FROM MatchHistory ORDER BY EndTime DESC', (err, rows) => {
-				if (err) { res.sendStatus(404); return ***REMOVED***
+				if (err) { res.sendStatus(404); return }
 				res.json(rows)
-			***REMOVED***)
-		***REMOVED*** else if (req.query.request && req.query.request.toLowerCase() === 'leaderboard') {
+			})
+		} else if (req.query.request && req.query.request.toLowerCase() === 'leaderboard') {
 			pool.query('SELECT Player1User AS Username, Player1FinalScore AS Score, Player1HeadShotCount AS Headshots, EndTime AS ScoreSetAt, MatchID FROM MatchHistory UNION ALL SELECT Player2User AS Username, Player2FinalScore AS Score, Player2HeadShotCount AS Headshots, EndTime AS ScoreSetAt, MatchID FROM MatchHistory ORDER BY Score DESC',
 				(err, rows) => {
-					if (err) { res.sendStatus(404); return ***REMOVED***
+					if (err) { res.sendStatus(404); return }
 					res.json(rows)
-				***REMOVED***)
-		***REMOVED*** else if (req.query.matchid) {
+				})
+		} else if (req.query.matchid) {
 			pool.query('SELECT * FROM MatchHistory WHERE MatchID = ?', req.query.matchid.toString(), (err, rows) => {
-				if (err) { res.sendStatus(404); return ***REMOVED***
+				if (err) { res.sendStatus(404); return }
 				res.json(rows)
-			***REMOVED***)
-		***REMOVED*** else {
+			})
+		} else {
 			res.sendStatus(404)
-		***REMOVED***
-	***REMOVED***)
+		}
+	})
 	.post(authenticateJWT, express.json(), (req, res) => {
 		if (req.body.cmd === 'add') {
 			pool.query('INSERT INTO MatchHistory SET ?', req.body.data, (err, result) => {
 				if (err && err.code === 'ER_DUP_ENTRY') {
-					console.log(`${clc.red('Duplicate entry')***REMOVED***`)
+					console.log(`${clc.red('Duplicate entry')}`)
 					res.sendStatus(409)
 					return
-				***REMOVED***
+				}
 				if (err) throw err
 				res.json(result)
-				console.log(`${clc.green('Added New Match: ')***REMOVED***${clc.cyan.bold(req.body.data.MatchID)***REMOVED***`)
-			***REMOVED***)
-		***REMOVED***
-	***REMOVED***)
+				console.log(`${clc.green('Added New Match: ')}${clc.cyan.bold(req.body.data.MatchID)}`)
+			})
+		}
+	})
 
 function authenticateJWT(req, res, next) {
 	const authHeader = req.headers.authorization
@@ -55,17 +55,17 @@ function authenticateJWT(req, res, next) {
 
 		jwt.verify(token, jwtSecret, (err, user) => {
 			if (err) {
-				console.log(`${clc.red('Invalid/Unauthorized Token')***REMOVED***`)
+				console.log(`${clc.red('Invalid/Unauthorized Token')}`)
 				return res.sendStatus(403)
-			***REMOVED***
+			}
 			console.log(user)
 			req.user = user
 			next()
-		***REMOVED***)
-	***REMOVED*** else {
-		console.log(`${clc.red('Not Authenticated')***REMOVED***`)
+		})
+	} else {
+		console.log(`${clc.red('Not Authenticated')}`)
 		res.sendStatus(401)
-	***REMOVED***
-***REMOVED***
+	}
+}
 
 module.exports = router

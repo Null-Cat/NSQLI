@@ -6,37 +6,37 @@ body {
         linear-gradient(45deg, black 25%, transparent 25%);
     background-size: 2em 2em;
     background-color: #232323;
-***REMOVED***
+}
 
 .page-header {
     padding: 0.5rem 0 0.5rem 0.5rem;
-***REMOVED***
+}
 
 h1 {
     font-family: Pacifico;
     color: white;
     font-size: 3em;
-***REMOVED***
+}
 
 p {
     font-family: Verdana, sans-serif;
     color: white;
     padding-top: 1em;
-***REMOVED***
+}
 
 table {
     border: 1px solid;
     border-collapse: collapse;
     color: white;
-***REMOVED***
+}
 
 tr:nth-child(even) {
     background-color: #30303085;
-***REMOVED***
+}
 
 tr:hover {
     background-color: rgb(0, 89, 255);
-***REMOVED***
+}
 
 th {
     font-family: sans-serif;
@@ -45,7 +45,7 @@ th {
     color: white;
     background-color: #000000;
     text-align: center;
-***REMOVED***
+}
 
 td {
     font-family: sans-serif;
@@ -53,4 +53,4 @@ td {
     padding: 0.3em !important;
     border: 1px solid;
     color: white;
-***REMOVED***
+}

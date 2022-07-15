@@ -6,31 +6,31 @@
   "scripts": {
     "start": "node server.js -d",
     "devStart": "nodemon 'server.js -d'"
-  ***REMOVED***,
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Null-Cat/NSQLI.git"
-  ***REMOVED***,
+  },
   "keywords": [],
   "author": "Null-Cat",
   "license": "MIT",
   "engines": {
     "node": "16.x"
-  ***REMOVED***,
+  },
   "bugs": {
     "url": "https://github.com/Null-Cat/NSQLI/issues"
-  ***REMOVED***,
+  },
   "homepage": "https://github.com/Null-Cat/NSQLI#readme",
   "dependencies": {
-    "cli-color": "^2.0.2",
+    "cli-color": "^2.0.3",
     "express": "^4.18.1",
     "http": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "pug": "^3.0.2",
     "yargs": "^17.5.1"
-  ***REMOVED***,
+  },
   "devDependencies": {
-    "nodemon": "^2.0.18"
-  ***REMOVED***
-***REMOVED***
+    "nodemon": "^2.0.19"
+  }
+}
