@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/Null-Cat/NSQLI#readme",
   "dependencies": {
-    "cli-color": "^2.0.2",
+    "cli-color": "^2.0.3",
     "express": "^4.18.1",
     "http": "^0.0.1-security",
     "jsonwebtoken": "^8.5.1",
@@ -31,6 +31,6 @@
     "yargs": "^17.5.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.18"
+    "nodemon": "^2.0.19"
   }
 }
